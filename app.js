@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get("/", function(req, res, next) {
-	res.render("index", { link: "", result: "" });
+	res.render("index", { link: "", title: "", result: "" });
 });
 
 app.post("/comp", function(req, res, next) {
@@ -21,9 +21,11 @@ app.post("/comp", function(req, res, next) {
 		const page = await browser.newPage();
 		await page.goto(req.body.url);
 		let resultTxt = await page.$eval('#vue-data', e => e.outerHTML);
+		let title = await page.title();
 		await browser.close();
 		await res.render("index", {
 			link: throwLink,
+			title: title,
 			result: resultTxt,
 		});
 	})();
