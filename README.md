@@ -1,9 +1,13 @@
 # gethousehtml
 
-利用方法
-動かせるよにする
+
+# 動かせるようにする
+```
 npm install
- 
-サーバー立ち上げる
+```
+
+# サーバー立ち上げる
+```
 node app.js
 http://localhost:3000
+```
